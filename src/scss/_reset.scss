@@ -1,0 +1,122 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap');
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0; padding:0; box-sizing:border-box;
+}
+
+a{
+    box-sizing:border-box;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+html{
+    font-size: 14px;
+}
+
+body {
+    font-family:$primary-font;
+    //@include vw-font-size-pc(16);
+    letter-spacing:-0.05em; line-height:1.6; -webkit-font-smoothing:antialiased; color:#333;
+
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border:0 none;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+input, select, textarea {
+    vertical-align:middle;
+    box-sizing:border-box;
+    border-radius:0;
+    font-family:$primary-font;
+}
+input{
+    margin:0;
+}
+img, fieldset {
+    border:0;
+}
+ul, ol, li{
+    list-style-type:none;
+}
+li img{
+    vertical-align:top;
+}
+button {
+    box-sizing:border-box;
+    padding:0;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    font-family:$primary-font;
+}
+a{
+    text-decoration:none;
+}
+img{
+    vertical-align:middle;
+    font-size:0;
+}
