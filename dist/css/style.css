@@ -1,4 +1,4 @@
-/*! Build Date: 2020-11-22 0:01:56 */
+/*! Build Date: 2020-11-22 4:22:24 */
 @import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap);
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -130,6 +130,133 @@ a {
 img {
   vertical-align: middle;
   font-size: 0;
+}
+
+.scroll-section {
+  position: relative;
+  padding-top: 30vh;
+  min-height: 100vh;
+}
+
+.scroll-section .sticky-elem {
+  display: none;
+  opacity: 0;
+}
+
+.scroll-section.is-motion .sticky-elem {
+  display: flex;
+}
+
+.main-message {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25%;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-message {
+    font-size: 6vw;
+    padding: 0 10%;
+  }
+}
+
+.logo {
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10vh;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 8vw;
+  }
+}
+
+.description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  line-height: 2.4;
+  font-weight: bold;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(150deg, #0f44a7 100%, #d95a5a 200%, #4ca754 300%);
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 4vw;
+    padding: 0 1em;
+  }
+}
+
+.sticky-elem {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+.canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.canvas-wrap #video-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.canvas-wrap #video-canvas.vertical {
+  width: 100%;
+}
+
+.canvas-wrap #video-canvas.horizontal {
+  height: 100%;
+}
+
+#scene-0 {
+  background-color: #333;
+}
+
+#scene-1 {
+  padding-bottom: 30vh;
+}
+
+#scene-2 {
+  padding-top: 0;
+}
+
+#scene-2.is-motion .canvas-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+#scene-2.is-motion .canvas-wrap.is-bottom {
+  position: absolute;
+  top: inherit;
+  bottom: 0;
+}
+
+footer {
+  background-color: #333;
+  color: #ccc;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
