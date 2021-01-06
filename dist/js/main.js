@@ -1,98 +1,318 @@
-/*! Build Date: 2020-11-22 4:22:24 */
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ({
+/*! Build Date: 2021. 1. 6. 오후 3:56:46 */
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/main.js":
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
+(function ($) {
+  var yOffset = 0; // 현재 스크롤 높이 저장
+
+  var currentScene = 0; // 현재 활성화 된 씬
+
+  var prevScrollHeight = 0; // 현재 스크롤 위치보다 이전에 있는 섹션들 높이 합
+
+  var sceneChange = false; // 씬이 변경될 때 활성화
+  // 정보 저장
+
+  var sceneInfo = [{
+    // 0
+    type: 'sticky',
+    heightNum: 5,
+    scrollHeight: 0,
+    objs: {
+      container: $('#scene-0'),
+      messageA: $('#scene-0 .main-message.message-a'),
+      messageB: $('#scene-0 .main-message.message-b'),
+      messageC: $('#scene-0 .main-message.message-c'),
+      messageD: $('#scene-0 .main-message.message-d')
+    },
+    values: {
+      messageA_opacity_in: [0, 1, {
+        start: 0.1,
+        end: 0.2
+      }],
+      messageB_opacity_in: [0, 1, {
+        start: 0.4,
+        end: 0.5
+      }],
+      messageC_opacity_in: [0, 1, {
+        start: 0.7,
+        end: 0.8
+      }],
+      messageA_translateX_in: [-10, 0, {
+        start: 0.1,
+        end: 0.2
+      }],
+      messageB_translateY_in: [-15, 0, {
+        start: 0.4,
+        end: 0.5
+      }],
+      messageC_translateX_in: [-5, 0, {
+        start: 0.7,
+        end: 0.8
+      }],
+      messageA_opacity_out: [1, 0, {
+        start: 0.25,
+        end: 0.35
+      }],
+      messageB_opacity_out: [1, 0, {
+        start: 0.55,
+        end: 0.65
+      }],
+      messageC_opacity_out: [1, 0, {
+        start: 0.85,
+        end: 0.95
+      }],
+      messageA_translateX_out: [0, 10, {
+        start: 0.25,
+        end: 0.35
+      }],
+      messageB_translateY_out: [0, 15, {
+        start: 0.55,
+        end: 0.65
+      }],
+      messageC_translateX_out: [0, 5, {
+        start: 0.85,
+        end: 0.95
+      }]
+    }
+  }, {
+    // 1
+    type: 'normal',
+    heightNum: 5,
+    scrollHeight: 0,
+    objs: {
+      container: $('#scene-1'),
+      description: $('#scene-1 .description')
+    },
+    values: {
+      background: [0, 300]
+    }
+  }, {
+    // 2
+    type: 'sticky',
+    heightNum: 2,
+    scrollHeight: 0,
+    objs: {
+      container: $('#scene-2'),
+      canvas: $('#video-canvas'),
+      context: $('#video-canvas')[0].getContext('2d'),
+      videoImages: []
+    },
+    values: {
+      videoImageCount: 249,
+      imageSequence: [0, 248, {
+        start: 0,
+        end: 0
+      }]
+    }
+  }]; // 캔버스 이미지 세팅
+
+  var setCanvasImage = function setCanvasImage() {
+    var imgElem;
+
+    for (var i = 0; i < sceneInfo[2].values.videoImageCount; i++) {
+      imgElem = new Image();
+      imgElem.src = "./video/001/man_".concat(1 + i, ".jpg");
+      sceneInfo[2].objs.videoImages.push(imgElem);
+    }
+  }; // 씬 레이아웃 설정(높이 입력 등)
+
+
+  var setLayout = function setLayout() {
+    for (var i = 0; i < sceneInfo.length; i++) {
+      if (sceneInfo[i].type === 'sticky') {
+        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+      } else if (sceneInfo[i].type === 'normal') {
+        sceneInfo[i].objs.container.css({
+          'height': "auto"
+        });
+        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.innerHeight();
+      } // sceneInfo[i].objs.container.style.height = `${ sceneInfo[i].scrollHeight }px`;
+
+
+      sceneInfo[i].objs.container.css({
+        'height': "".concat(sceneInfo[i].scrollHeight, "px")
+      });
+    } // 현재 currentScene 구하기 (새로고침 등등)
+    // 현재 스크롤높이 값보다 섹션 총합을 비교했을 때, 스크롤 높이값이 작아지면 그 값이 현재 보고 있는 씬
+
+
+    yOffset = pageYOffset;
+    var totalScrollHeight = 0;
+
+    for (var _i = 0; _i < sceneInfo.length; _i++) {
+      totalScrollHeight += sceneInfo[_i].scrollHeight;
+
+      if (totalScrollHeight >= yOffset) {
+        currentScene = _i;
+        break;
+      }
+    } // console.log(totalScrollHeight, currentScene);
+
+
+    $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion'); // canvas 브라우저 사이즈에 맞춰서 조정
+
+    var winWidth = document.body.offsetWidth;
+    var winHeight = window.innerHeight;
+
+    if (winHeight / winWidth > 0.5625) {
+      sceneInfo[2].objs.canvas.removeClass().addClass('horizontal');
+    } else {
+      sceneInfo[2].objs.canvas.removeClass().addClass('vertical');
+    }
+  };
+
+  var calcValues = function calcValues(values, currentYOffset) {
+    var rv;
+    var scrollHeight = sceneInfo[currentScene].scrollHeight;
+    var scrollRatio = currentYOffset / scrollHeight;
+
+    if (values.length === 3) {
+      // 구간 설정이 되어 있으면 여기서 실행
+      var partScrollStart = values[2].start * scrollHeight;
+      var partScrollEnd = values[2].end * scrollHeight;
+      var partScrollHeight = partScrollEnd - partScrollStart;
+
+      if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
+        rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0]) + values[0];
+      } else if (currentYOffset < partScrollStart) {
+        rv = values[0];
+      } else if (currentYOffset > partScrollEnd) {
+        rv = values[1];
+      }
+    } else {
+      rv = scrollRatio * (values[1] - values[0]) + values[0]; //ex. 10 ~ 20 의 값이 들어오고 스크롤 비율이 0.5: 0.5 * (20 - 10) + 10 = 15
+    }
+
+    return rv;
+  };
+
+  var playAnimation = function playAnimation() {
+    var objs = sceneInfo[currentScene].objs;
+    var values = sceneInfo[currentScene].values;
+    var currentYOffset = yOffset - prevScrollHeight; // 현재 씬에서의 스크롤 높이
+
+    var scrollHeight = sceneInfo[currentScene].scrollHeight;
+    var scrollRatio = currentYOffset / scrollHeight; // 현재 씬에서 스크롤 높이만큼의 비율
+
+    switch (currentScene) {
+      case 0:
+        if (scrollRatio <= 0.22) {
+          objs.messageA.css({
+            'opacity': calcValues(values.messageA_opacity_in, currentYOffset),
+            'transform': "translate3d(".concat(calcValues(values.messageA_translateX_in, currentYOffset), "%, -50%, 0)")
+          });
+        } else {
+          objs.messageA.css({
+            'opacity': calcValues(values.messageA_opacity_out, currentYOffset),
+            'transform': "translate3d(".concat(calcValues(values.messageA_translateX_out, currentYOffset), "%, -50%, 0)")
+          });
+        }
+
+        if (scrollRatio <= 0.52) {
+          objs.messageB.css({
+            'opacity': calcValues(values.messageB_opacity_in, currentYOffset),
+            'transform': "translate3d(0, ".concat(-50 + calcValues(values.messageB_translateY_in, currentYOffset), "%, 0)")
+          });
+        } else {
+          objs.messageB.css({
+            'opacity': calcValues(values.messageB_opacity_out, currentYOffset),
+            'transform': "translate3d(0, ".concat(-50 + calcValues(values.messageB_translateY_out, currentYOffset), "%, 0)")
+          });
+        }
+
+        if (scrollRatio <= 0.82) {
+          objs.messageC.css({
+            'opacity': calcValues(values.messageC_opacity_in, currentYOffset),
+            'transform': "translate3d(".concat(calcValues(values.messageC_translateX_in, currentYOffset), "%, -50%, 0)")
+          });
+        } else {// objs.messageC.css({
+          //     'opacity': calcValues(values.messageC_opacity_out, currentYOffset),
+          //     'transform': `translate3d(${calcValues(values.messageC_translateX_out, currentYOffset)}%, -50%, 0)`
+          // });
+        }
+
+        break;
+
+      case 1:
+        objs.description.css({
+          'background-image': "linear-gradient(150deg, rgb(15, 68, 167) ".concat(100 - calcValues(values.background, currentYOffset), "%, rgb(217, 90, 90) ").concat(200 - calcValues(values.background, currentYOffset), "%, rgb(76, 167, 84) ").concat(300 - calcValues(values.background, currentYOffset), "%)")
+        });
+        break;
+
+      case 2:
+        values.imageSequence[2].end = (scrollHeight - window.innerHeight) / scrollHeight;
+        var sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
+        objs.context.drawImage(objs.videoImages[sequence], 0, 0); // console.log(sequence)
+
+        if (currentYOffset >= scrollHeight - window.innerHeight) {
+          // console.log('end');
+          objs.container.find('.canvas-wrap').addClass('is-bottom');
+        } else {
+          objs.container.find('.canvas-wrap').removeClass('is-bottom');
+        }
+
+        break;
+    }
+  };
+
+  var scrollLoop = function scrollLoop() {
+    // 스크롤 중... 현재 씬 구하기
+    sceneChange = false;
+    prevScrollHeight = 0;
+
+    for (var i = 0; i < currentScene; i++) {
+      prevScrollHeight += sceneInfo[i].scrollHeight;
+    }
+
+    if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+      sceneChange = true;
+      currentScene++;
+      $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion');
+    }
+
+    if (yOffset < prevScrollHeight) {
+      sceneChange = true;
+      if (currentScene === 0) return; // - 방지
+
+      currentScene--;
+      $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion');
+    }
+
+    if (sceneChange) return;
+    playAnimation();
+  };
+
+  window.addEventListener('scroll', function () {
+    yOffset = window.pageYOffset;
+    scrollLoop();
+  });
+  window.addEventListener('resize', setLayout);
+  window.addEventListener('load', function () {
+    setLayout();
+    sceneInfo[2].objs.context.drawImage(sceneInfo[2].objs.videoImages[0], 0, 0);
+  });
+  setCanvasImage();
+})((jquery__WEBPACK_IMPORTED_MODULE_0___default()));
+
+/***/ }),
 
 /***/ "./node_modules/jquery/dist/jquery.js":
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
   \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery JavaScript Library v3.5.1
@@ -10929,7 +11149,7 @@ if ( true ) {
 	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function() {
 		return jQuery;
 	}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 }
 
 
@@ -10969,326 +11189,79 @@ return jQuery;
 } );
 
 
-/***/ }),
-
-/***/ "./src/js/main.js":
-/*!************************!*\
-  !*** ./src/js/main.js ***!
-  \************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-
-
-(function ($) {
-  var yOffset = 0; // 현재 스크롤 높이 저장
-
-  var currentScene = 0; // 현재 활성화 된 씬
-
-  var prevScrollHeight = 0; // 현재 스크롤 위치보다 이전에 있는 섹션들 높이 합
-
-  var sceneChange = false; // 씬이 변경될 때 활성화
-  // 정보 저장
-
-  var sceneInfo = [{
-    // 0
-    type: 'sticky',
-    heightNum: 5,
-    scrollHeight: 0,
-    objs: {
-      container: $('#scene-0'),
-      messageA: $('#scene-0 .main-message.message-a'),
-      messageB: $('#scene-0 .main-message.message-b'),
-      messageC: $('#scene-0 .main-message.message-c'),
-      messageD: $('#scene-0 .main-message.message-d')
-    },
-    values: {
-      messageA_opacity_in: [0, 1, {
-        start: 0.1,
-        end: 0.2
-      }],
-      messageB_opacity_in: [0, 1, {
-        start: 0.4,
-        end: 0.5
-      }],
-      messageC_opacity_in: [0, 1, {
-        start: 0.7,
-        end: 0.8
-      }],
-      messageA_translateX_in: [-10, 0, {
-        start: 0.1,
-        end: 0.2
-      }],
-      messageB_translateY_in: [-15, 0, {
-        start: 0.4,
-        end: 0.5
-      }],
-      messageC_translateX_in: [-5, 0, {
-        start: 0.7,
-        end: 0.8
-      }],
-      messageA_opacity_out: [1, 0, {
-        start: 0.25,
-        end: 0.35
-      }],
-      messageB_opacity_out: [1, 0, {
-        start: 0.55,
-        end: 0.65
-      }],
-      messageC_opacity_out: [1, 0, {
-        start: 0.85,
-        end: 0.95
-      }],
-      messageA_translateX_out: [0, 10, {
-        start: 0.25,
-        end: 0.35
-      }],
-      messageB_translateY_out: [0, 15, {
-        start: 0.55,
-        end: 0.65
-      }],
-      messageC_translateX_out: [0, 5, {
-        start: 0.85,
-        end: 0.95
-      }]
-    }
-  }, {
-    // 1
-    type: 'normal',
-    heightNum: 5,
-    scrollHeight: 0,
-    objs: {
-      container: $('#scene-1'),
-      description: $('#scene-1 .description')
-    },
-    values: {
-      background: [0, 300]
-    }
-  }, {
-    // 2
-    type: 'sticky',
-    heightNum: 2,
-    scrollHeight: 0,
-    objs: {
-      container: $('#scene-2'),
-      canvas: $('#video-canvas'),
-      context: $('#video-canvas')[0].getContext('2d'),
-      videoImages: []
-    },
-    values: {
-      videoImageCount: 249,
-      imageSequence: [0, 248, {
-        start: 0,
-        end: 0
-      }]
-    }
-  }]; // 캔버스 이미지 세팅
-
-  var setCanvasImage = function setCanvasImage() {
-    var imgElem;
-
-    for (var i = 0; i < sceneInfo[2].values.videoImageCount; i++) {
-      imgElem = new Image();
-      imgElem.src = "./video/001/man_".concat(1 + i, ".jpg");
-      sceneInfo[2].objs.videoImages.push(imgElem);
-    }
-  }; // 씬 레이아웃 설정(높이 입력 등)
-
-
-  var setLayout = function setLayout() {
-    for (var i = 0; i < sceneInfo.length; i++) {
-      if (sceneInfo[i].type === 'sticky') {
-        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-      } else if (sceneInfo[i].type === 'normal') {
-        sceneInfo[i].objs.container.css({
-          'height': "auto"
-        });
-        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.innerHeight();
-      } // sceneInfo[i].objs.container.style.height = `${ sceneInfo[i].scrollHeight }px`;
-
-
-      sceneInfo[i].objs.container.css({
-        'height': "".concat(sceneInfo[i].scrollHeight, "px")
-      });
-    } // 현재 currentScene 구하기 (새로고침 등등)
-    // 현재 스크롤높이 값보다 섹션 총합을 비교했을 때, 스크롤 높이값이 작아지면 그 값이 현재 보고 있는 씬
-
-
-    yOffset = pageYOffset;
-    var totalScrollHeight = 0;
-
-    for (var _i = 0; _i < sceneInfo.length; _i++) {
-      totalScrollHeight += sceneInfo[_i].scrollHeight;
-
-      if (totalScrollHeight >= yOffset) {
-        currentScene = _i;
-        break;
-      }
-    } // console.log(totalScrollHeight, currentScene);
-
-
-    $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion'); // canvas 브라우저 사이즈에 맞춰서 조정
-
-    var winWidth = document.body.offsetWidth;
-    var winHeight = window.innerHeight;
-
-    if (winHeight / winWidth > 0.5625) {
-      sceneInfo[2].objs.canvas.removeClass().addClass('horizontal');
-    } else {
-      sceneInfo[2].objs.canvas.removeClass().addClass('vertical');
-    }
-  };
-
-  var calcValues = function calcValues(values, currentYOffset) {
-    var rv;
-    var scrollHeight = sceneInfo[currentScene].scrollHeight;
-    var scrollRatio = currentYOffset / scrollHeight;
-
-    if (values.length === 3) {
-      // 구간 설정이 되어 있으면 여기서 실행
-      var partScrollStart = values[2].start * scrollHeight;
-      var partScrollEnd = values[2].end * scrollHeight;
-      var partScrollHeight = partScrollEnd - partScrollStart;
-
-      if (currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd) {
-        rv = (currentYOffset - partScrollStart) / partScrollHeight * (values[1] - values[0]) + values[0];
-      } else if (currentYOffset < partScrollStart) {
-        rv = values[0];
-      } else if (currentYOffset > partScrollEnd) {
-        rv = values[1];
-      }
-    } else {
-      rv = scrollRatio * (values[1] - values[0]) + values[0]; //ex. 10 ~ 20 의 값이 들어오고 스크롤 비율이 0.5: 0.5 * (20 - 10) + 10 = 15
-    }
-
-    return rv;
-  };
-
-  var playAnimation = function playAnimation() {
-    var objs = sceneInfo[currentScene].objs;
-    var values = sceneInfo[currentScene].values;
-    var currentYOffset = yOffset - prevScrollHeight; // 현재 씬에서의 스크롤 높이
-
-    var scrollHeight = sceneInfo[currentScene].scrollHeight;
-    var scrollRatio = currentYOffset / scrollHeight; // 현재 씬에서 스크롤 높이만큼의 비율
-
-    switch (currentScene) {
-      case 0:
-        if (scrollRatio <= 0.22) {
-          objs.messageA.css({
-            'opacity': calcValues(values.messageA_opacity_in, currentYOffset),
-            'transform': "translate3d(".concat(calcValues(values.messageA_translateX_in, currentYOffset), "%, -50%, 0)")
-          });
-        } else {
-          objs.messageA.css({
-            'opacity': calcValues(values.messageA_opacity_out, currentYOffset),
-            'transform': "translate3d(".concat(calcValues(values.messageA_translateX_out, currentYOffset), "%, -50%, 0)")
-          });
-        }
-
-        if (scrollRatio <= 0.52) {
-          objs.messageB.css({
-            'opacity': calcValues(values.messageB_opacity_in, currentYOffset),
-            'transform': "translate3d(0, ".concat(-50 + calcValues(values.messageB_translateY_in, currentYOffset), "%, 0)")
-          });
-        } else {
-          objs.messageB.css({
-            'opacity': calcValues(values.messageB_opacity_out, currentYOffset),
-            'transform': "translate3d(0, ".concat(-50 + calcValues(values.messageB_translateY_out, currentYOffset), "%, 0)")
-          });
-        }
-
-        if (scrollRatio <= 0.82) {
-          objs.messageC.css({
-            'opacity': calcValues(values.messageC_opacity_in, currentYOffset),
-            'transform': "translate3d(".concat(calcValues(values.messageC_translateX_in, currentYOffset), "%, -50%, 0)")
-          });
-        } else {// objs.messageC.css({
-          //     'opacity': calcValues(values.messageC_opacity_out, currentYOffset),
-          //     'transform': `translate3d(${calcValues(values.messageC_translateX_out, currentYOffset)}%, -50%, 0)`
-          // });
-        }
-
-        break;
-
-      case 1:
-        objs.description.css({
-          'background-image': "linear-gradient(150deg, rgb(15, 68, 167) ".concat(100 - calcValues(values.background, currentYOffset), "%, rgb(217, 90, 90) ").concat(200 - calcValues(values.background, currentYOffset), "%, rgb(76, 167, 84) ").concat(300 - calcValues(values.background, currentYOffset), "%)")
-        });
-        break;
-
-      case 2:
-        values.imageSequence[2].end = (scrollHeight - window.innerHeight) / scrollHeight;
-        var sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
-        objs.context.drawImage(objs.videoImages[sequence], 0, 0); // console.log(sequence)
-
-        if (currentYOffset >= scrollHeight - window.innerHeight) {
-          // console.log('end');
-          objs.container.find('.canvas-wrap').addClass('is-bottom');
-        } else {
-          objs.container.find('.canvas-wrap').removeClass('is-bottom');
-        }
-
-        break;
-    }
-  };
-
-  var scrollLoop = function scrollLoop() {
-    // 스크롤 중... 현재 씬 구하기
-    sceneChange = false;
-    prevScrollHeight = 0;
-
-    for (var i = 0; i < currentScene; i++) {
-      prevScrollHeight += sceneInfo[i].scrollHeight;
-    }
-
-    if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
-      sceneChange = true;
-      currentScene++;
-      $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion');
-    }
-
-    if (yOffset < prevScrollHeight) {
-      sceneChange = true;
-      if (currentScene === 0) return; // - 방지
-
-      currentScene--;
-      $("#scene-".concat(currentScene)).addClass('is-motion').siblings().removeClass('is-motion');
-    }
-
-    if (sceneChange) return;
-    playAnimation();
-  };
-
-  window.addEventListener('scroll', function () {
-    yOffset = window.pageYOffset;
-    scrollLoop();
-  });
-  window.addEventListener('resize', setLayout);
-  window.addEventListener('load', function () {
-    setLayout();
-    sceneInfo[2].objs.context.drawImage(sceneInfo[2].objs.videoImages[0], 0, 0);
-  });
-  setCanvasImage();
-})(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
-
-/***/ }),
-
-/***/ 0:
-/*!******************************!*\
-  !*** multi ./src/js/main.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./src/js/main.js */"./src/js/main.js");
-
-
 /***/ })
 
-/******/ });
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	// startup
+/******/ 	// Load entry module
+/******/ 	__webpack_require__("./src/js/main.js");
+/******/ 	// This entry module used 'exports' so it can't be inlined
+/******/ })()
+;
 //# sourceMappingURL=main.js.map

@@ -1,4 +1,4 @@
-/*! Build Date: 2020-11-22 4:22:24 */
+/*! Build Date: 2021. 1. 6. 오후 3:56:46 */
 @import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap);
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -257,6 +257,66 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: .5s;
+  opacity: 0;
+}
+
+.loading-circle {
+  width: 54px;
+  height: 54px;
+  animation: loading-spin 3s infinite;
+}
+
+.loading-circle circle {
+  fill: transparent;
+  stroke: #000;
+  stroke-width: 4;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 157;
+  animation: loading-circle-ani 1s infinite;
+}
+
+.before-load {
+  overflow: hidden;
+}
+
+.before-load #wrapper {
+  display: none;
+}
+
+.before-load .loading {
+  opacity: 1;
+}
+
+@keyframes loading-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-circle-ani {
+  0% {
+    stroke-dashoffset: 157;
+  }
+  75% {
+    stroke-dashoffset: -147;
+  }
+  100% {
+    stroke-dashoffset: -157;
+  }
 }
 
 

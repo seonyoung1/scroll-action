@@ -107,3 +107,49 @@ footer{
     justify-content: center;
 }
 
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    transition: .5s;
+    opacity: 0;
+    &-circle{
+        width: 54px;
+        height: 54px;
+        animation: loading-spin 3s infinite;
+        circle{
+            fill: transparent;
+            stroke: #000;
+            stroke-width: 4;
+            //document.querySelector('.loading-circle circle').getTotalLength() 로 값을 얻어 올 수 있음
+            stroke-dashoffset: 0;
+            stroke-dasharray: 157;
+            animation: loading-circle-ani 1s infinite;
+        }
+    }
+}
+.before-load {
+    overflow: hidden;
+    #wrapper {
+        display: none;
+    }
+    .loading{
+        opacity: 1;
+    }
+}
+
+@keyframes loading-spin {
+    100% { transform: rotate(360deg); }
+}
+@keyframes loading-circle-ani {
+    0% { stroke-dashoffset: 157; }
+    75% { stroke-dashoffset: -147; }
+    100% { stroke-dashoffset: -157; }
+}
